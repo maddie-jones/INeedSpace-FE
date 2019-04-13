@@ -1,0 +1,26 @@
+{
+  "name": "ineedspace-fe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "node-sass": "^4.11.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "compile:sass": "node-sass lib/sass/main.scss lib/css/style.css -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maddyg91/INeedSpace-FE.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maddyg91/INeedSpace-FE/issues"
+  },
+  "homepage": "https://github.com/maddyg91/INeedSpace-FE#readme"
+}
