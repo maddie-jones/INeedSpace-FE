@@ -19,6 +19,13 @@ nav {
     nav ul li {
       display: inline-block; }
 
+.container {
+  display: flex;
+}
+.twitter-feed {
+  height: 500px;
+  overflow: scroll;
+}
 .nav-right {
   float: right;
   padding-right: 75px;
