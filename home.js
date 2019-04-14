@@ -1,5 +1,5 @@
-const apodUrl= 'http://localhost:3000/api/v1/apod?api_key=jdCci90zMTb076TOrfTGriiH1nCEcLqJGNUXhRHP'
-const postFavUrl= 'http://localhost:3000/api/v1/favorites'
+const apodUrl= 'https://enigmatic-ocean-44786.herokuapp.com/api/v1/apod?api_key=jdCci90zMTb076TOrfTGriiH1nCEcLqJGNUXhRHP'
+const postFavUrl= 'https://enigmatic-ocean-44786.herokuapp.com/api/v1/favorites'
 
 function imageOfTheDay() {
   fetch(apodUrl)
