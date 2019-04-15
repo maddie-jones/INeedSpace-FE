@@ -8,11 +8,20 @@ function imageOfTheDay() {
 }
 
 function renderImage(data) {
-  let url = data["data"]["attributes"].url
-  video = document.createElement('iframe');
-  video.src = url;
-  video.className = 'video';
-  document.getElementById("day-image").appendChild(video);
+  let media_type = data["data"]["attributes"].media_type
+  if (media_type == "video") {
+    let url = data["data"]["attributes"].url
+    video = document.createElement('iframe');
+    video.src = url;
+    video.className = 'video';
+    document.getElementById("day-image").appendChild(video);
+  } else if (media_type == "image") {
+    var url = data["data"]["attributes"].url
+    image = document.createElement('img');
+    image.src = url;
+    image.className = 'image';
+    document.getElementById("day-image").appendChild(image);
+  };
 
   let imageTitle = data["data"]["attributes"].title
   title = document.createElement('p');
