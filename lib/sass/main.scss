@@ -43,7 +43,9 @@ nav {
         color: white;
     }
 }
-
+.container {
+  display: flex;
+}
 .image {
   max-width: 55%;
   border-style: solid;

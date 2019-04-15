@@ -9,7 +9,6 @@ function imageOfTheDay() {
 
 function renderImage(data) {
   let url = data["data"]["attributes"].url
-
   video = document.createElement('iframe');
   video.src = url;
   video.className = 'video';
