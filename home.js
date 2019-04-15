@@ -9,12 +9,12 @@ function imageOfTheDay() {
 
 function renderImage(data) {
   let url = data["data"]["attributes"].url
-  let imageTitle = data["data"]["attributes"].title
-  image = document.createElement('img');
-  image.src = url;
-  image.className = 'image';
-  document.getElementById("day-image").appendChild(image);
+  video = document.createElement('iframe');
+  video.src = url;
+  video.className = 'video';
+  document.getElementById("day-image").appendChild(video);
 
+  let imageTitle = data["data"]["attributes"].title
   title = document.createElement('p');
   title.innerHTML = imageTitle;
   title.className = 'image-title';
