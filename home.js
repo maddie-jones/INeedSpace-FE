@@ -43,15 +43,17 @@ function addToFavorites(data) {
   const url = data["data"]["attributes"].url
   const hdurl = data["data"]["attributes"].hdurl
   const explanation = data["data"]["attributes"].explanation
-  postFavorite(title, url, hdurl, explanation)
+  const media_type = data["data"]["attributes"].media_type
+  postFavorite(title, url, hdurl, explanation, media_type)
 }
 
-function postFavorite(title, url, hdurl, explanation) {
+function postFavorite(title, url, hdurl, explanation, media_type) {
   const data = {
     title: title,
     url: url,
     hdurl: hdurl,
-    explanation: explanation
+    explanation: explanation,
+    media_type: media_type
   }
   fetch(postFavUrl, {
     method: 'post',
