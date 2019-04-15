@@ -64,4 +64,5 @@ nav {
 
 #favorites {
   display: flex;
-  flex-direction: row; }
+  flex-direction: row;
+  max-height: 215px; }
