@@ -17,7 +17,7 @@ function renderImage(data) {
     video.src = url;
     video.className = 'video';
     video.addEventListener('click',function() {
-       addModal(url)});
+       addModal(url, media_type)});
     document.getElementById("day-image").appendChild(video);
   } else if (media_type == "image") {
     var url = data["data"]["attributes"].url
@@ -25,7 +25,7 @@ function renderImage(data) {
     image.src = url;
     image.className = 'image';
     image.addEventListener('click',function() {
-       addModal(url)});
+       addModal(url, media_type)});
     document.getElementById("day-image").appendChild(image);
   };
 
@@ -89,17 +89,26 @@ function renderSearchImage(data) {
   }
 }
 
-function addModal(url) {
-  var modal = document.getElementById('myModal');
-  var img = document.getElementById('myImg');
-  var modalImg = document.getElementById("img01");
-  var captionText = document.getElementById("caption");
-  modal.style.display = "block";
-  modalImg.src = url;
-  var span = document.getElementsByClassName("close")[0];
-  span.addEventListener('click', function() {
-    modal.style.display = "none";
-  });
+function addModal(url, media_type) {
+  if (media_type == 'image') {
+    var modal1 = document.getElementById('myModalImg');
+    var modalImg = document.getElementById("img02");
+    modal1.style.display = "block";
+    modalImg.src = url;
+    var span = document.getElementsByClassName("close")[1];
+    span.addEventListener('click', function() {
+      modal1.style.display = "none";
+    });
+  } else if (media_type == 'video') {
+    var modal2 = document.getElementById('myModalVideo');
+    var modalVid = document.getElementById("img01");
+    modal2.style.display = "block";
+    modalVid.src = url;
+    var span = document.getElementsByClassName("close")[0];
+    span.addEventListener('click', function() {
+      modal2.style.display = "none";
+    });
+  }
 }
 
 imageOfTheDay()
