@@ -13,8 +13,8 @@ function renderImage(data) {
   let media_type = data["data"]["attributes"].media_type
   if (media_type == "video") {
     let url = data["data"]["attributes"].url
-    video = document.createElement('iframe');
-    video.src = url;
+    video = document.createElement('div');
+    video.innerHTML = url;
     video.className = 'video';
     video.addEventListener('click',function() {
        addModal(url, media_type)});
@@ -42,6 +42,20 @@ function renderImage(data) {
   starBtn.addEventListener('click',function() {
      addToFavorites(data)});
   document.getElementById("day-image").appendChild(starBtn);
+
+  const breatheHTML = `Just Breathe`;
+  breatheBtn = document.createElement('button');
+  breatheBtn.innerHTML = breatheHTML;
+  breatheBtn.setAttribute('class', 'breathe');
+  breatheBtn.addEventListener('click',function() {
+     justBreathe()});
+  document.getElementById("day-image").appendChild(breatheBtn);
+}
+
+function justBreathe(){
+  let mediaType = 'video'
+  let breathe = `<iframe width="560" height="315" src="https://www.youtube.com/embed/5f5N6YFjvVc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+  addModal(breathe, mediaType);
 }
 
 function addToFavorites(data) {
@@ -79,12 +93,15 @@ function getSearchImage() {
 }
 
 function renderSearchImage(data) {
-  const rawData = data.data
+  const rawData = data.data.slice(0,9)
   for (let image in rawData) {
+    let mediaType = 'image'
     let url = rawData[image]["attributes"]["href"]
     searchImage = document.createElement('img');
     searchImage.src = url;
     searchImage.className = 'search-image';
+    searchImage.addEventListener('click',function() {
+       addModal(url, mediaType)});
     document.getElementById("search-display").appendChild(searchImage)
   }
 }
@@ -103,7 +120,7 @@ function addModal(url, media_type) {
     var modal2 = document.getElementById('myModalVideo');
     var modalVid = document.getElementById("img01");
     modal2.style.display = "block";
-    modalVid.src = url;
+    modalVid.innerHTML = `${url}`;
     var span = document.getElementsByClassName("close")[0];
     span.addEventListener('click', function() {
       modal2.style.display = "none";
