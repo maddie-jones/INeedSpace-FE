@@ -11,6 +11,15 @@ function imageOfTheDay() {
 
 function renderImage(data) {
   let media_type = data["data"]["attributes"].media_type
+
+  const starHTML = `<i class="fas fa-star" id= "fav"></i>`;
+  starBtn = document.createElement('span');
+  starBtn.innerHTML = starHTML;
+  starBtn.setAttribute('class', 'star-favorite');
+  starBtn.addEventListener('click',function() {
+     addToFavorites(data)});
+  document.getElementById("day-image").appendChild(starBtn);
+
   if (media_type == "video") {
     let url = data["data"]["attributes"].url
     video = document.createElement('div');
@@ -35,14 +44,6 @@ function renderImage(data) {
   title.className = 'image-title';
   document.getElementById("day-image").appendChild(title);
 
-  const starHTML = `<i class="fas fa-star" id= "fav"></i>`;
-  starBtn = document.createElement('button');
-  starBtn.innerHTML = starHTML;
-  starBtn.setAttribute('class', 'star-favorite');
-  starBtn.addEventListener('click',function() {
-     addToFavorites(data)});
-  document.getElementById("day-image").appendChild(starBtn);
-
   const breatheHTML = `Just Breathe`;
   breatheBtn = document.createElement('button');
   breatheBtn.innerHTML = breatheHTML;
@@ -65,6 +66,8 @@ function addToFavorites(data) {
   const explanation = data["data"]["attributes"].explanation
   const media_type = data["data"]["attributes"].media_type
   postFavorite(title, url, hdurl, explanation, media_type)
+  let star = document.getElementsByClassName('fas')[0]
+  star.style.color = '#f7e0a3';
 }
 
 function postFavorite(title, url, hdurl, explanation, media_type) {

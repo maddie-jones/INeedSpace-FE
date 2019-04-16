@@ -57,6 +57,7 @@ nav {
   border-style: solid;
   border-width: 5px;
   border-color: #9fd3c7;
+  margin-top: 1.5rem;
 }
 
 .video {
@@ -64,12 +65,13 @@ nav {
   border-style: solid;
   border-width: 5px;
   border-color: #9fd3c7;
+  margin-top: 1.5rem;
 }
 .breathe {
   margin: 2rem;
   padding: 1rem;
   font-size: 20px;
-  color: #9fd3c7; 
+  color: #9fd3c7;
   border-radius: 12px;
   background-color: #385170;
   border: 2px solid #142d4c;
@@ -84,7 +86,7 @@ nav {
   overflow: scroll;
 }
 .search-image {
-  max-width: 465px;
+  max-width: 300px;
   max-height: 300px;
   margin: 1rem;
 }
@@ -132,6 +134,14 @@ nav {
   color: #f1f1f1;
   font-size: 40px;
   font-weight: bold;
+  transition: 0.3s;
+}
+
+.star-favorite {
+  top: 15px;
+  right: 35px;
+  color: #142d4c;
+  font-size: 18px;
   transition: 0.3s;
 }
 
