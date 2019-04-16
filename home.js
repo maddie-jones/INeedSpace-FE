@@ -16,12 +16,16 @@ function renderImage(data) {
     video = document.createElement('iframe');
     video.src = url;
     video.className = 'video';
+    video.addEventListener('click',function() {
+       addModal(url, media_type)});
     document.getElementById("day-image").appendChild(video);
   } else if (media_type == "image") {
     var url = data["data"]["attributes"].url
     image = document.createElement('img');
     image.src = url;
     image.className = 'image';
+    image.addEventListener('click',function() {
+       addModal(url, media_type)});
     document.getElementById("day-image").appendChild(image);
   };
 
@@ -82,6 +86,28 @@ function renderSearchImage(data) {
     searchImage.src = url;
     searchImage.className = 'search-image';
     document.getElementById("search-display").appendChild(searchImage)
+  }
+}
+
+function addModal(url, media_type) {
+  if (media_type == 'image') {
+    var modal1 = document.getElementById('myModalImg');
+    var modalImg = document.getElementById("img02");
+    modal1.style.display = "block";
+    modalImg.src = url;
+    var span = document.getElementsByClassName("close")[1];
+    span.addEventListener('click', function() {
+      modal1.style.display = "none";
+    });
+  } else if (media_type == 'video') {
+    var modal2 = document.getElementById('myModalVideo');
+    var modalVid = document.getElementById("img01");
+    modal2.style.display = "block";
+    modalVid.src = url;
+    var span = document.getElementsByClassName("close")[0];
+    span.addEventListener('click', function() {
+      modal2.style.display = "none";
+    });
   }
 }
 
