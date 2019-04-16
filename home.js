@@ -1,5 +1,7 @@
 const apodUrl= 'https://enigmatic-ocean-44786.herokuapp.com/api/v1/apod?api_key=jdCci90zMTb076TOrfTGriiH1nCEcLqJGNUXhRHP'
 const postFavUrl= 'https://enigmatic-ocean-44786.herokuapp.com/api/v1/favorites'
+const searchImageInput = document.getElementById("search-input")
+const searchImageBtn = document.getElementById("search-image")
 
 function imageOfTheDay() {
   fetch(apodUrl)
@@ -64,4 +66,24 @@ function postFavorite(title, url, hdurl, explanation, media_type) {
   });
 }
 
+function getSearchImage() {
+  var input = searchImageInput.value
+  fetch(`https://enigmatic-ocean-44786.herokuapp.com/api/v1/imagesearch?q=${input}`)
+  .then(response => response.json())
+  .then(data => renderSearchImage(data))
+  .catch(err => console.error(err))
+}
+
+function renderSearchImage(data) {
+  const rawData = data.data
+  for (let image in rawData) {
+    let url = rawData[image]["attributes"]["href"]
+    searchImage = document.createElement('img');
+    searchImage.src = url;
+    searchImage.className = 'search-image';
+    document.getElementById("search-display").appendChild(searchImage)
+  }
+}
+
 imageOfTheDay()
+searchImageBtn.addEventListener('click', getSearchImage)
