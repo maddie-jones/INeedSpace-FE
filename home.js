@@ -16,12 +16,16 @@ function renderImage(data) {
     video = document.createElement('iframe');
     video.src = url;
     video.className = 'video';
+    video.addEventListener('click',function() {
+       addModal(url)});
     document.getElementById("day-image").appendChild(video);
   } else if (media_type == "image") {
     var url = data["data"]["attributes"].url
     image = document.createElement('img');
     image.src = url;
     image.className = 'image';
+    image.addEventListener('click',function() {
+       addModal(url)});
     document.getElementById("day-image").appendChild(image);
   };
 
@@ -83,6 +87,19 @@ function renderSearchImage(data) {
     searchImage.className = 'search-image';
     document.getElementById("search-display").appendChild(searchImage)
   }
+}
+
+function addModal(url) {
+  var modal = document.getElementById('myModal');
+  var img = document.getElementById('myImg');
+  var modalImg = document.getElementById("img01");
+  var captionText = document.getElementById("caption");
+  modal.style.display = "block";
+  modalImg.src = url;
+  var span = document.getElementsByClassName("close")[0];
+  span.addEventListener('click', function() {
+    modal.style.display = "none";
+  });
 }
 
 imageOfTheDay()
