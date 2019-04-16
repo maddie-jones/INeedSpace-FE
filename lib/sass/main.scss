@@ -73,13 +73,14 @@ nav {
   border-color: #9fd3c7;
 }
 
+.fav-container {
+  width: 85%;
+}
+
 #favorites {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(4,1fr);
   grid-gap: 0.5rem;
   margin: 2rem;
-}
-.fav-container {
-  width: 85%;
 }

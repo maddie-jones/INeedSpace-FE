@@ -28,6 +28,14 @@ function renderFavorite(data) {
       image.className = 'fav-image';
       document.getElementById(`fav-container-${id}`).appendChild(image);
     };
+    
+    deleteBtn = document.createElement('button');
+    deleteBtn.innerHTML = "delete favorite" ;
+    deleteBtn.className = 'delete-btn';
+    deleteBtn.addEventListener('click',function() {
+      removeFromFavorites(id)});
+      document.getElementById(`fav-container-${id}`).appendChild(deleteBtn);
+
     let imageTitle = favorite["attributes"].title
     title = document.createElement('p');
     title.innerHTML = imageTitle;
@@ -40,13 +48,16 @@ function renderFavorite(data) {
     explanation.className = 'fav-explanation';
     document.getElementById(`fav-container-${id}`).appendChild(explanation);
 
-    deleteBtn = document.createElement('button');
-    deleteBtn.innerHTML = "delete favorite" ;
-    deleteBtn.className = 'delete-btn';
-    deleteBtn.addEventListener('click',function() {
-       removeFromFavorites(data)});
-    document.getElementById(`fav-container-${id}`).appendChild(deleteBtn);
   }
+}
+
+function removeFromFavorites(id) {
+  fetch(`https://enigmatic-ocean-44786.herokuapp.com/api/v1/favorites/${id}`, {
+    method: 'DELETE'
+  })
+  .then(() => {
+    document.getElementById("favorites").removeChild(document.getElementById(`fav-container-${id}`));
+  });
 }
 
 getFavorite()
