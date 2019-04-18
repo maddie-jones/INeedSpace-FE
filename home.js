@@ -40,7 +40,7 @@ function renderImage(data) {
 
   let imageTitle = data["data"]["attributes"].title
   title = document.createElement('p');
-  title.innerHTML = imageTitle;
+  title.innerHTML = `Title: ${imageTitle}`;
   title.className = 'image-title';
   document.getElementById("day-image").appendChild(title);
 
@@ -97,6 +97,8 @@ function getSearchImage() {
 
 function renderSearchImage(data) {
   const rawData = data.data.slice(0,9)
+  searchBox = document.getElementsByClassName('image-search')[0]
+  searchBox.style.height = "550px"
   for (let image in rawData) {
     let mediaType = 'image'
     let url = rawData[image]["attributes"]["href"]
